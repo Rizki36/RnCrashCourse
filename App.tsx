@@ -1,13 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { FC, useState } from "react";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  ListRenderItem,
-} from "react-native";
+import { StyleSheet, View, FlatList, ListRenderItem } from "react-native";
 import Header from "./components/Header";
 import Item from "./components/Item";
 import type { ItemType } from "./types";
@@ -60,22 +53,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-  },
-  inputContainer: {
-    width: "100%",
-    flexDirection: "row",
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#000",
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    flex: 1,
-    borderRadius: 8,
-  },
-  button: {
-    backgroundColor: "blue",
-    color: "white",
   },
   constinerList: {
     width: "100%",
