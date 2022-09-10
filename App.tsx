@@ -4,18 +4,13 @@ import {
   Button,
   StyleSheet,
   Text,
-  TextInput,
   View,
   FlatList,
   ListRenderItem,
-  NativeSyntheticEvent,
-  TextInputTextInputEventData,
 } from "react-native";
-
-type ItemType = {
-  id: number;
-  title: string;
-};
+import Header from "./components/Header";
+import Item from "./components/Item";
+import type { ItemType } from "./types";
 
 export default function App() {
   const [list, setList] = useState<ItemType[]>([]);
@@ -47,41 +42,17 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          value={inputValue}
-          placeholder="Input your name"
-          onChangeText={(text) => setInputValue(text)}
-        />
-        <Button onPress={handlePress} title="Add item" />
-      </View>
-
+      <Header
+        inputValue={inputValue}
+        handlePress={handlePress}
+        setInputValue={setInputValue}
+      />
       <View style={styles.constinerList}>
         <FlatList data={list} renderItem={renderList}></FlatList>
       </View>
     </View>
   );
 }
-
-const Item: FC<ItemType & { onClose: () => any }> = ({ title, onClose }) => {
-  return (
-    <View style={itemStyles.container}>
-      <Text>{title}</Text>
-      <Text onPress={onClose}>Close</Text>
-    </View>
-  );
-};
-
-const itemStyles = StyleSheet.create({
-  container: {
-    width: "100%",
-    flex: 1,
-    padding: 10,
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-});
 
 const styles = StyleSheet.create({
   container: {
